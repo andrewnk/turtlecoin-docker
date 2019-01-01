@@ -19,5 +19,7 @@ Build Arguments/Environment Variables:
 | BRANCH | Master | Sets the git branch to build from |
 
 Build Examples:
-```docker build -t turtlecoin-base .```
-```docker build --build-arg BRANCH=development -t turtlecoin-base .```
+```
+docker build -t turtlecoin-base .
+docker build --build-arg BRANCH=development -t turtlecoin-base .
+```
