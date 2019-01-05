@@ -13,7 +13,7 @@ RUN addgroup -S turtlecoin && adduser -S turtlecoin -G turtlecoin -h /home/turtl
     mkdir -p /home/turtlecoin/.TurtleCoin /home/turtlecoin/bin
 
 #copy binary from base
-COPY --from=base /zedwallet /home/turtlecoin/bin/zedwallet
+COPY --from=base /turtlecoin/zedwallet /home/turtlecoin/bin/zedwallet
 
 WORKDIR /home/turtlecoin
 

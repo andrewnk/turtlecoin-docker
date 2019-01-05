@@ -1,48 +1,37 @@
-FROM ubuntu:latest as builder
+FROM alpine as git
 
-ARG BRANCH=master
+ARG BRANCH=development
 ENV BRANCH=${BRANCH}
-
-#create our clone dir
-RUN mkdir -p /opt/turtlecoin
 
 WORKDIR /opt/turtlecoin
 
-#install git and clone
-RUN apt-get update && \
-    apt-get install --no-install-recommends -y \
-        git \
-        ca-certificates && \
+RUN apk add --no-cache --virtual git-dependency git && \
     git clone -b ${BRANCH} --single-branch https://github.com/turtlecoin/turtlecoin.git . && \
-    mkdir -p /opt/turtlecoin/build && \
-    apt-get remove -y git ca-certificates && \
-    apt-get autoremove -y && \
-    apt-get clean
+    sed -i "s/PAGE_SIZE/page_size/g" src/crypto/slow-hash.c && \
+    mkdir /opt/turtlecoin/build && \
+    apk del git-dependency
+
+FROM alpine as builder
+
+COPY --from=git /opt/turtlecoin /opt/turtlecoin
 
 WORKDIR /opt/turtlecoin/build
 
-# install build dependencies and build
-RUN apt-get update && \
-    apt-get install --no-install-recommends -y \
-        build-essential \
-        python-dev \
-        cmake \
-        git \
-        libboost-all-dev && \
-    cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++11" .. && \
-    make -j$(nproc) TurtleCoind zedwallet && \
-    mv src/TurtleCoind src/zedwallet /opt && \
-    strip /opt/TurtleCoind /opt/zedwallet && \
-    apt-get remove -y build-essential python-dev cmake libboost-all-dev git && \
-    apt-get autoremove -y && \
-    apt-get clean
+# add packages and build
+RUN apk add --no-cache --virtual general-dependencies \
+    git \
+    cmake \
+    binutils \
+    expat-dev && \
+    apk add --no-cache --virtual build-base-dependency build-base --repository http://dl-cdn.alpinelinux.org/alpine/edge/main && \
+    apk add --no-cache --virtual boost-dependency boost-build --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
+    apk add --no-cache  libucontext-dev && \
+    cmake -DCMAKE_C_FLAGS="-lucontext" .. && \
+    make -j$(nproc) && \
+    mkdir /turtlecoin && \
+    find src -type f -perm /a+x -exec strip {} \; -exec mv {} /turtlecoin \; && \
+    apk del general-dependencies build-base-dependency boost-dependency
 
-WORKDIR /opt
+FROM scratch as base
 
-# remove cloned project
-RUN rm -fr /opt/turtlecoin
-
-FROM scratch
-
-#copy binary from builder
-COPY --from=builder /opt/* /
+COPY --from=builder /turtlecoin/ /
