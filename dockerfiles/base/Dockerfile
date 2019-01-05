@@ -7,7 +7,6 @@ WORKDIR /opt/turtlecoin
 
 RUN apk add --no-cache --virtual git-dependency git && \
     git clone -b ${BRANCH} --single-branch https://github.com/turtlecoin/turtlecoin.git . && \
-    sed -i "s/PAGE_SIZE/page_size/g" src/crypto/slow-hash.c && \
     mkdir /opt/turtlecoin/build && \
     apk del git-dependency
 
@@ -25,7 +24,7 @@ RUN apk add --no-cache --virtual general-dependencies \
     expat-dev && \
     apk add --no-cache --virtual build-base-dependency build-base --repository http://dl-cdn.alpinelinux.org/alpine/edge/main && \
     apk add --no-cache --virtual boost-dependency boost-build --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
-    apk add --no-cache  libucontext-dev && \
+    apk add --no-cache libucontext-dev && \
     cmake -DCMAKE_C_FLAGS="-lucontext" .. && \
     make -j$(nproc) && \
     mkdir /turtlecoin && \
