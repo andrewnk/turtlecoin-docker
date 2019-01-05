@@ -28,3 +28,9 @@ or
 docker build -t zedwallet .
 docker run -it -e REMOTE_DAEMON_HOST=my-favorite-node.lol -e REMOTE_DAEMON_PORT=11898 zedwallet
 ```
+
+This image is also hosted on [Docker Hub](https://cloud.docker.com/u/andrewnk/repository/docker/andrewnk/turtlecoin). To use from the Docker Hub image:
+
+```
+FROM andrewnk/turtlecoin:zedwallet as zedwallet
+```
