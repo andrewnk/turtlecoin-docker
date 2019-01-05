@@ -23,4 +23,6 @@ RUN chown -R turtlecoin:turtlecoin .
 
 USER turtlecoin
 
+VOLUME ["/home/turtlecoin/.TurtleCoin"]
+
 ENTRYPOINT ["/bin/sh", "-c", "/home/turtlecoin/bin/zedwallet --remote-daemon ${REMOTE_DAEMON_HOST}:${REMOTE_DAEMON_PORT}"]
