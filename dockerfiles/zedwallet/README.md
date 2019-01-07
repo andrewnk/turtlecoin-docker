@@ -29,7 +29,7 @@ docker run -d -e REMOTE_DAEMON_HOST=my-favorite-node.lol -e REMOTE_DAEMON_PORT=1
 
 When running in detached mode, you may attach using:
 ```
-docker attach turtlecoind
+docker attach zedwallet
 ```
 
 To detach, press CTRL+p+q
