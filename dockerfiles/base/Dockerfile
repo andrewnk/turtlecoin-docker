@@ -3,6 +3,9 @@ FROM alpine as git
 ARG BRANCH=development
 ENV BRANCH=${BRANCH}
 
+ARG ENABLE_SSL=false
+ENV ENABLE_SSL=${ENABLE_SSL}
+
 WORKDIR /opt/turtlecoin
 
 RUN apk add --no-cache --virtual git-dependency git && \
@@ -21,15 +24,17 @@ RUN apk add --no-cache --virtual general-dependencies \
     git \
     cmake \
     binutils \
-    expat-dev && \
-    apk add --no-cache --virtual build-base-dependency build-base --repository http://dl-cdn.alpinelinux.org/alpine/edge/main && \
-    apk add --no-cache --virtual boost-dependency boost-build --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
-    apk add --no-cache libucontext-dev && \
-    cmake -DCMAKE_C_FLAGS="-lucontext" .. && \
+    expat-dev \
+    build-base \
+    boost-static \
+    boost-dev \
+    libucontext-dev \
+    openssl-dev && \
+    cmake -DCMAKE_C_FLAGS="-lucontext" -DENABLE_SSL=${ENABLE_SSL} .. && \
     make -j$(nproc) && \
     mkdir /turtlecoin && \
     find src -type f -perm /a+x -exec strip {} \; -exec mv {} /turtlecoin \; && \
-    apk del general-dependencies build-base-dependency boost-dependency
+    apk del general-dependencies
 
 FROM scratch as base
 
