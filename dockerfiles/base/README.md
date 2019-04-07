@@ -6,7 +6,7 @@ Build Arguments/Environment Variables:
 
 | Name | Default | Function |
 | --- | --- | --- |
-| BRANCH | Master | Sets the git branch to build from |
+| BRANCH | development | Sets the git branch to build from |
 
 Build Examples:
 ```
