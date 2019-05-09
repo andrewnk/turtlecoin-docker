@@ -36,12 +36,21 @@ docker build -t turtlecoind .
 docker run -it -p 11898:11898 -p 11897:11897 --name turtlecoind -v turtlecoind:/home/turtlecoin/ turtlecoind
 ```
 
-or
+or:
 
 ```
 docker build -t turtlecoind .
 docker run -d -p 11898:11898 -p 11897:11897 --name turtlecoind -v turtlecoind:/home/turtlecoin/ turtlecoind
 ```
+
+With a bind mount:
+
+```
+docker build -t turtlecoind .
+docker run -d --name turtlecoind -v ${PWD}:/home/turtlecoin/ turtlecoind
+```
+
+When using a bind mount you will need to manually download the checkpoints.csv file to your mounted directory.
 
 When running in detached mode, you may attach using:
 ```
@@ -49,7 +58,6 @@ docker attach turtlecoind
 ```
 
 To detach, press CTRL+p+q
-
 
 This image is also hosted on [Docker Hub](https://cloud.docker.com/u/andrewnk/repository/docker/andrewnk/turtlecoin). To use from the Docker Hub image:
 

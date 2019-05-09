@@ -2,6 +2,9 @@ FROM andrewnk/turtlecoin:base as base
 
 FROM alpine
 
+RUN addgroup -S turtlecoin && adduser -S turtlecoin -G turtlecoin -h /home/turtlecoin && \
+    apk add --no-cache 'su-exec>=0.2'
+
 # Manually add a peer to the local peer list ONLY attempt connections to it. [ip:port]
 ARG ADD_EXCLUSIVE_NODE=''
 ENV ADD_EXCLUSIVE_NODE=${ADD_EXCLUSIVE_NODE}
@@ -95,20 +98,23 @@ ARG RPC_BIND_PORT=11898
 ENV RPC_BIND_PORT=${RPC_BIND_PORT}
 
 # copy binary from builder
-COPY --from=base /TurtleCoind /usr/bin/TurtleCoind
+COPY --from=base /TurtleCoind /usr/local/bin
 
-# add library required to run binary, add user, and fix ownership
+# add library required to run binary and fix ownership
 RUN apk add --no-cache --virtual wget-dependency wget && \
     apk add --no-cache libucontext-dev && \
-    addgroup -S turtlecoin && adduser -S turtlecoin -G turtlecoin -h /home/turtlecoin && \
     wget -O ${LOAD_CHECKPOINTS} ${CHECKPOINTS_URL} && \
-    chown -R turtlecoin:turtlecoin /home/turtlecoin && \
+    chown -R turtlecoin:turtlecoin /home/turtlecoin ${LOAD_CHECKPOINTS} && \
     apk del wget-dependency
 
+VOLUME /home/turtlecoin
 WORKDIR /home/turtlecoin
 
-USER turtlecoin
+COPY ./docker-entrypoint.sh /usr/local/bin/
+
+RUN chmod 777 /usr/local/bin/docker-entrypoint.sh && \
+    ln -s /usr/local/bin/docker-entrypoint.sh
+
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE ${RPC_BIND_PORT} ${P2P_BIND_PORT}
-
-ENTRYPOINT ["/bin/sh", "-c", "TurtleCoind --load-checkpoints ${LOAD_CHECKPOINTS} --log-file ${LOG_FILE} --log-level ${LOG_LEVEL} --db-max-open-files ${DB_MAX_OPEN_FILES} --db-read-buffer-size ${DB_READ_BUFFER_SIZE} --db-threads ${DB_THREADS} --db-write-buffer-size ${DB_WRITE_BUFFER_SIZE} --allow-local-ip ${ALLOW_LOCAL_IP} --hide-my-port ${HIDE_MY_PORT} --p2p-bind-ip ${P2P_BIND_IP} --p2p-bind-port ${P2P_BIND_PORT} --p2p-external-port ${P2P_EXTERNAL_PORT} --rpc-bind-ip ${RPC_BIND_IP} --rpc-bind-port ${RPC_BIND_PORT} --add-exclusive-node ${ADD_EXCLUSIVE_NODE} --seed-node ${SEED_NODE} --add-peer ${ADD_PEER} --add-priority-node ${ADD_PRIORITY_NODE} --enable-blockexplorer ${ENABLE_BLOCKEXPLORER} --enable-cors ${ENABLE_CORS} --fee-address ${FEE_ADDRESS} --fee-amount ${FEE_AMOUNT}"]
