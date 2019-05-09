@@ -34,6 +34,13 @@ docker attach zedwallet
 
 To detach, press CTRL+p+q
 
+Running with a bind mount in detached mode:
+
+```
+docker build -t turtlecoind .
+docker run -d --name zedwallet -v ${PWD}/zedwallet:/home/turtlecoin/ zedwallet
+```
+
 This image is also hosted on [Docker Hub](https://cloud.docker.com/u/andrewnk/repository/docker/andrewnk/turtlecoin). To use from the Docker Hub image:
 
 ```
