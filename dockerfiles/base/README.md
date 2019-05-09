@@ -7,6 +7,7 @@ Build Arguments/Environment Variables:
 | Name | Default | Function |
 | --- | --- | --- |
 | BRANCH | development | Sets the git branch to build from |
+| ENABLE_SSL | false | Whether or not to build with ssl support |
 
 Build Examples:
 ```
@@ -14,7 +15,7 @@ docker build -t turtlecoin-base .
 docker build --build-arg BRANCH=development -t turtlecoin-base .
 ```
 
-To copy a binary into your own image, use multi stage-builds like this:
+To copy a binary into your own image, use multi-stage builds like this:
 ```
 FROM turtlecoin-base as base
 
