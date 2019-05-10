@@ -3,7 +3,9 @@
 This is an example docker-compose file that runs TurtleCoind and zedwallet, pulled from Docker Hub, using ttyd. Communication between the two processes occurs within a docker network. 
 
 You can view available environment variables here:
+
 [TurtleCoind](../../dockerfiles/turtlecoind/README.md)
+
 [zedwallet](../../dockerfiles/zedwallet/README.md)
 
 To start the containers simply run ```docker-compose up -d```
