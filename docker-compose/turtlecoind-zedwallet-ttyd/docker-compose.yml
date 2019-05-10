@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  turtlecoind:
+    image: andrewnk/turtlecoin:turtlecoind-ttyd
+    container_name: daemon_with_wallet_turtlecoind
+    environment:
+      - RPC_BIND_IP=0.0.0.0
+    networks:
+      - turtlecoin
+    ports:
+      - 8080:7681
+      - 11897:11897
+    restart: always
+    volumes:
+      - ${PWD}/turtlecoin:/home/turtlecoin
+
+  zedwallet:
+    image: andrewnk/turtlecoin:zedwallet-ttyd
+    container_name: daemon_with_wallet_zedwallet
+    environment:
+      - REMOTE_DAEMON_HOST=turtlecoind
+      - REMOTE_DAEMON_PORT=11898
+    depends_on:
+      - turtlecoind
+    ports:
+      - 8181:7681
+    networks:
+      - turtlecoin
+    restart: always
+    volumes:
+      - ${PWD}/turtlecoin:/home/turtlecoin
+
+networks:
+  turtlecoin:
+    driver: bridge
+    ipam:
+      driver: default
