@@ -1,6 +1,6 @@
 # TurtleCoin TurtleCoind With TTYD Docker Image
 
-This image pulls the binary from the base image and runs TurtleCoind on apline using ttyd. With ttyd you can watch view the daemon in a browser.
+This image pulls the binary from the base image and runs TurtleCoind on apline using ttyd. With ttyd you can watch view the daemon in a browser. The process is run within tmux to persist the session in case the page reloads or crashes.
 
 Build Arguments/Environment Variables:
 
@@ -29,7 +29,6 @@ Build Arguments/Environment Variables:
 | P2P_EXTERNAL_PORT | 0 | External TCP port for the P2P service (NAT port forward) |
 | RPC_BIND_IP | 127.0.0.1 | Interface IP address for the RPC service |
 | RPC_BIND_PORT | 11898 | TCP port for the RPC service |
-| WEB_PORT | 7681 | Port used to access ttyd via browser |
 
 Examples:
 ```
@@ -37,7 +36,7 @@ docker build -t turtlecoind-ttyd .
 docker run -d -p 7681:7681 -p 11898:11898 -p 11897:11897 --name turtlecoind-ttyd -v turtlecoind:/home/turtlecoin/ turtlecoind-ttyd
 ```
 
-To watch the action in your browser navigate to http://localhost:7681 (or whatever port you pass in)
+To watch the action in your browser navigate to http://localhost:7681 (or whatever port you pass in, e.g. ```-p 8080:7681```)
 
 With a bind mount:
 

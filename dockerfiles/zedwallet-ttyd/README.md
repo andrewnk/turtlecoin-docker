@@ -1,6 +1,6 @@
 # TurtleCoin zedwallet With TTYD Docker Image
 
-This image pulls the binary from the base image and runs zedwallet on apline using ttyd. ttyd allows you to interact with zedwallet via a browser.
+This image pulls the binary from the base image and runs zedwallet on apline using ttyd. ttyd allows you to interact with zedwallet via a browser. The process is run within tmux to persist the session in case the page reloads or crashes.
 
 ![screenshot](zedwallet-ttyd.gif)
 
@@ -10,7 +10,6 @@ Build Arguments/Environment Variables:
 | --- | --- | --- |
 | REMOTE_DAEMON_HOST | | If using a remote node, used to set the remote node host |
 | REMOTE_DAEMON_PORT | | If using a remote node, used to set the remote node port |
-| WEB_PORT | 7681 | Port used to access ttyd via browser |
 
 Examples:
 ```
@@ -18,7 +17,7 @@ docker build -t zedwallet-ttyd .
 docker run -d -p 7681:7681 zedwallet-ttyd
 ```
 
-To use zedwallet navigate to http://localhost:7681 (or whatever port you pass in) in your browser
+To use zedwallet navigate to http://localhost:7681 (or whatever port you pass in, e.g. ```-p 8080:7681```)
 
 Using a remote node
 ```

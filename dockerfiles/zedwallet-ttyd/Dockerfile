@@ -13,12 +13,8 @@ ENV REMOTE_DAEMON_HOST=${REMOTE_DAEMON_HOST}
 ARG REMOTE_DAEMON_PORT
 ENV REMOTE_DAEMON_PORT=${REMOTE_DAEMON_PORT}
 
-# ttyd web port
-ARG WEB_PORT=7681
-ENV WEB_PORT=${WEB_PORT}
-
-# add library required to run binary and ttyd
-RUN apk add --no-cache libucontext-dev ttyd
+# add library required to run binary, ttyd, and tmux
+RUN apk add --no-cache libucontext-dev ttyd tmux
 
 #uncomment when the ttyd ssl bug is fixed
 #RUN apk add --no-cache openssl && \
@@ -47,7 +43,5 @@ COPY ./docker-entrypoint.sh /usr/local/bin/
 RUN chown -R turtlecoin:turtlecoin . && \
     chmod 777 /usr/local/bin/docker-entrypoint.sh && \
     ln -s /usr/local/bin/docker-entrypoint.sh
-
-EXPOSE ${WEB_PORT}
 
 ENTRYPOINT ["docker-entrypoint.sh"]

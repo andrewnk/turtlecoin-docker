@@ -1,7 +1,12 @@
 #!/bin/sh
 set -e
 
-set -- TurtleCoind \
+#for when the ttyd ssl bug is fixed
+#ttyd --ssl --ssl-cert /ttyd/certs/server.crt --ssl-key /ttyd/certs/server.key --ssl-ca /ttyd/certs/ca.crt
+
+set -- ttyd \
+        tmux new -A -s TurtleCoind \
+        TurtleCoind \
         --load-checkpoints ${LOAD_CHECKPOINTS} \
         --log-file ${LOG_FILE} \
         --log-level ${LOG_LEVEL} \
@@ -30,7 +35,4 @@ if [ "$1" = 'TurtleCoind' -a "$(id -u)" = '0' ]; then
     exec su-exec turtlecoin "$0" "$@"
 fi
 
-#uncomment when the ttyd ssl bug is fixed
-#exec ttyd --ssl --ssl-cert /ttyd/certs/server.crt --ssl-key /ttyd/certs/server.key --ssl-ca /ttyd/certs/ca.crt "$@"
-
-exec ttyd "$@"
+exec "$@"

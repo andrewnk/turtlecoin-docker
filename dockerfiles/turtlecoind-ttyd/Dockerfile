@@ -97,16 +97,12 @@ ENV RPC_BIND_IP=${RPC_BIND_IP}
 ARG RPC_BIND_PORT=11898
 ENV RPC_BIND_PORT=${RPC_BIND_PORT}
 
-# ttyd web port
-ARG WEB_PORT=7681
-ENV WEB_PORT=${WEB_PORT}
-
 # copy binary from builder
 COPY --from=base /TurtleCoind /usr/local/bin
 
-# add library required to run binary and fix ownership
+# add library required to run binary, ttyd, and tmux and fix ownership
 RUN apk add --no-cache --virtual wget-dependency wget && \
-    apk add --no-cache libucontext-dev ttyd && \
+    apk add --no-cache libucontext-dev ttyd tmux && \
     wget -O ${LOAD_CHECKPOINTS} ${CHECKPOINTS_URL} && \
     chown -R turtlecoin:turtlecoin /home/turtlecoin ${LOAD_CHECKPOINTS} && \
     apk del wget-dependency
@@ -136,4 +132,4 @@ RUN chmod 777 /usr/local/bin/docker-entrypoint.sh && \
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-EXPOSE ${RPC_BIND_PORT} ${P2P_BIND_PORT} ${WEB_PORT}
+EXPOSE ${RPC_BIND_PORT} ${P2P_BIND_PORT}
