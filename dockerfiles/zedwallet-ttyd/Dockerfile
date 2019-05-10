@@ -41,7 +41,7 @@ COPY --from=base /zedwallet /usr/local/bin
 VOLUME /home/turtlecoin
 WORKDIR /home/turtlecoin
 
-COPY ./docker-entrypoint.sh /usr/local/bin/
+COPY docker-entrypoint.sh /usr/local/bin/
 
 # fix ownership
 RUN chown -R turtlecoin:turtlecoin . && \
