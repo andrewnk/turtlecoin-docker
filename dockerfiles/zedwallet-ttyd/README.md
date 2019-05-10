@@ -10,6 +10,8 @@ Build Arguments/Environment Variables:
 | --- | --- | --- |
 | REMOTE_DAEMON_HOST | | If using a remote node, used to set the remote node host |
 | REMOTE_DAEMON_PORT | | If using a remote node, used to set the remote node port |
+| WEB_USERNAME |  | Username to access the web terminal |
+| WEB_PASSWORD |  | Password to access the web terminal |
 
 Examples:
 ```
@@ -30,6 +32,11 @@ Running with a bind mount:
 ```
 docker build -t zedwallet-ttyd .
 docker run -d -p 7681:7681 --name zedwallet-ttyd -v ${PWD}/zedwallet:/home/turtlecoin/ zedwallet-ttyd
+```
+
+Accessing the web terminal with a username and password:
+```
+docker run -d -p 7681:7681 -e WEB_USERNAME=Slow -e WEB_PASSWORD=AndSteady zedwallet-ttyd
 ```
 
 This image is also hosted on [Docker Hub](https://cloud.docker.com/u/andrewnk/repository/docker/andrewnk/turtlecoin). To use from the Docker Hub image:

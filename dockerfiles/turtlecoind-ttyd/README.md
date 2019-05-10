@@ -29,6 +29,8 @@ Build Arguments/Environment Variables:
 | P2P_EXTERNAL_PORT | 0 | External TCP port for the P2P service (NAT port forward) |
 | RPC_BIND_IP | 127.0.0.1 | Interface IP address for the RPC service |
 | RPC_BIND_PORT | 11898 | TCP port for the RPC service |
+| WEB_USERNAME |  | Username to access the web terminal |
+| WEB_PASSWORD |  | Password to access the web terminal |
 
 Examples:
 ```
@@ -46,6 +48,11 @@ docker run -d -p 7681:7681 -p 11898:11898 -p 11897:11897 --name turtlecoind-ttyd
 ```
 
 When using a bind mount you will need to manually download the checkpoints.csv file to your mounted directory.
+
+Accessing the web terminal with a username and password:
+```
+docker run -d -p 7681:7681 -p 11898:11898 -p 11897:11897 -e WEB_USERNAME=Slow -e WEB_PASSWORD=AndSteady --name turtlecoind-ttyd -v turtlecoind:/home/turtlecoin/ turtlecoind-ttyd
+```
 
 This image is also hosted on [Docker Hub](https://cloud.docker.com/u/andrewnk/repository/docker/andrewnk/turtlecoin). To use from the Docker Hub image:
 

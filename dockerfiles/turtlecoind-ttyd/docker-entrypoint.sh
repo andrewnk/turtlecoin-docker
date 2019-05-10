@@ -4,8 +4,13 @@ set -e
 #for when the ttyd ssl bug is fixed
 #ttyd --ssl --ssl-cert /ttyd/certs/server.crt --ssl-key /ttyd/certs/server.key --ssl-ca /ttyd/certs/ca.crt
 
-set -- ttyd \
-        tmux new -A -s TurtleCoind \
+set -- ttyd
+
+if [[ ! -z "$WEB_USERNAME" && ! -z "$WEB_PASSWORD" ]]; then
+    set -- "$@" -c ${WEB_USERNAME}:${WEB_PASSWORD}
+fi
+
+set -- "$@" tmux new -A -s TurtleCoind \
         TurtleCoind \
         --load-checkpoints ${LOAD_CHECKPOINTS} \
         --log-file ${LOG_FILE} \
@@ -28,7 +33,7 @@ set -- ttyd \
         --enable-blockexplorer ${ENABLE_BLOCKEXPLORER} \
         --enable-cors ${ENABLE_CORS} \
         --fee-address ${FEE_ADDRESS} \
-        --fee-amount ${FEE_AMOUNT} "$@"
+        --fee-amount ${FEE_AMOUNT}
 
 if [ "$1" = 'TurtleCoind' -a "$(id -u)" = '0' ]; then
     find . \! -user turtlecoin -exec chown turtlecoin '{}' +

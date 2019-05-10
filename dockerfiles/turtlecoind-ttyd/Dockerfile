@@ -97,6 +97,14 @@ ENV RPC_BIND_IP=${RPC_BIND_IP}
 ARG RPC_BIND_PORT=11898
 ENV RPC_BIND_PORT=${RPC_BIND_PORT}
 
+# Web username
+ARG WEB_USERNAME
+ENV WEB_USERNAME=${WEB_USERNAME}
+
+# Web username
+ARG WEB_PASSWORD
+ENV WEB_PASSWORD=${WEB_PASSWORD}
+
 # copy binary from builder
 COPY --from=base /TurtleCoind /usr/local/bin
 

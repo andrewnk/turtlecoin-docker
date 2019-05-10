@@ -13,6 +13,14 @@ ENV REMOTE_DAEMON_HOST=${REMOTE_DAEMON_HOST}
 ARG REMOTE_DAEMON_PORT
 ENV REMOTE_DAEMON_PORT=${REMOTE_DAEMON_PORT}
 
+# Web username
+ARG WEB_USERNAME
+ENV WEB_USERNAME=${WEB_USERNAME}
+
+# Web username
+ARG WEB_PASSWORD
+ENV WEB_PASSWORD=${WEB_PASSWORD}
+
 # add library required to run binary, ttyd, and tmux
 RUN apk add --no-cache libucontext-dev ttyd tmux
 
