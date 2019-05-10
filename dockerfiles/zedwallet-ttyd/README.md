@@ -2,6 +2,8 @@
 
 This image pulls the binary from the base image and runs zedwallet on apline using ttyd. ttyd allows you to interact with zedwallet via a browser.
 
+![screenshot](zedwallet-ttyd.gif)
+
 Build Arguments/Environment Variables:
 
 | Name | Default | Function |
