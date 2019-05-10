@@ -5,6 +5,7 @@ This repo is a collection of Docker images and Docker Compose files that run a v
 All images use Alpine as the base which reduces a lot of bloat, keeping the final images very small and portable.
 
 Current list of Docker images (more to come soon):
+
 | Name | Description |
 | --- | --- |
 | [Base](dockerfiles/base) | Contains all TurtleCoin binaries and is meant to be a starting point to build from |
@@ -14,6 +15,7 @@ Current list of Docker images (more to come soon):
 | [zedwallet with TTYD](dockerfiles/zedwallet-ttyd) | Image that runs zedwallet with TTYD |
 
 Current list of Docker Compose files (more to come soon):
+
 | Name | Description |
 | --- | --- |
 | [TurtleCoind and zedwallet with TTYD](docker-compose/turtlecoind-zedwallet-ttyd) | Spins up two containers, TurtleCoind and zedwallet, and shares the terminals over the web via TTYD |
