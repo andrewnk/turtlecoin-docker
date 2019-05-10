@@ -1,4 +1,4 @@
-# TurtleCoin zedwallet with ttyd Docker Image
+# TurtleCoin zedwallet With TTYD Docker Image
 
 This image pulls the binary from the base image and runs zedwallet on apline using ttyd. ttyd allows you to interact with zedwallet via a browser.
 

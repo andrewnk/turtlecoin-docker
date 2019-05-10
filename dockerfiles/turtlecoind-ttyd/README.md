@@ -1,6 +1,6 @@
-# TurtleCoin TurtleCoind Docker Image
+# TurtleCoin TurtleCoind With TTYD Docker Image
 
-This image pulls the binary from the base image and runs TurtleCoind on apline.
+This image pulls the binary from the base image and runs TurtleCoind on apline using ttyd. With ttyd you can watch view the daemon in a browser.
 
 Build Arguments/Environment Variables:
 
