@@ -16,7 +16,7 @@ Build Arguments/Environment Variables:
 Examples:
 ```
 docker build -t zedwallet-ttyd .
-docker run -d -p 7681:7681 zedwallet-ttyd
+docker run -d -p 7681:7681 --name zedwallet-ttyd zedwallet-ttyd
 ```
 
 To use zedwallet navigate to http://localhost:7681 (or whatever port you pass in, e.g. ```-p 8080:7681```)
@@ -36,10 +36,18 @@ docker run -d -p 7681:7681 --name zedwallet-ttyd -v ${PWD}/zedwallet:/home/turtl
 
 Accessing the web terminal with a username and password:
 ```
-docker run -d -p 7681:7681 -e WEB_USERNAME=Slow -e WEB_PASSWORD=AndSteady zedwallet-ttyd
+docker run -d -p 7681:7681 -e WEB_USERNAME=Slow -e WEB_PASSWORD=AndSteady --name zedwallet-ttyd zedwallet-ttyd
 ```
 
-This image is also hosted on [Docker Hub](https://cloud.docker.com/u/andrewnk/repository/docker/andrewnk/turtlecoin). To use from the Docker Hub image:
+This image is also hosted on [Docker Hub](https://cloud.docker.com/u/andrewnk/repository/docker/andrewnk/turtlecoin).
+
+To run from the Docker Hub image:
+
+```
+docker run -d -p 7681:7681 --name zedwallet-ttyd andrewnk/turtlecoin:zedwallet-ttyd
+```
+
+To use from the Docker Hub image:
 
 ```
 FROM andrewnk/turtlecoin:zedwallet-ttyd as zedwallet-ttyd

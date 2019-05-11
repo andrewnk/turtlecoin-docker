@@ -59,7 +59,15 @@ docker attach turtlecoind
 
 To detach, press CTRL+p+q
 
-This image is also hosted on [Docker Hub](https://cloud.docker.com/u/andrewnk/repository/docker/andrewnk/turtlecoin). To use from the Docker Hub image:
+This image is also hosted on [Docker Hub](https://cloud.docker.com/u/andrewnk/repository/docker/andrewnk/turtlecoin). 
+
+To run from the Docker Hub image:
+
+```
+docker run -d -p 11898:11898 -p 11897:11897 --name turtlecoind andrewnk/turtlecoin:turtlecoind
+```
+
+To use from the Docker Hub image:
 
 ```
 FROM andrewnk/turtlecoin:turtlecoind as turtlecoind
