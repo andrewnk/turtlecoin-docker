@@ -13,7 +13,7 @@ Current list of Docker images (more to come soon):
 | [TurtleCoind with TTYD](dockerfiles/turtlecoind-ttyd) | Image that runs TurtleCoind with TTYD |
 | [zedwallet](dockerfiles/zedwallet) | Image that runs zedwallet |
 | [zedwallet with TTYD](dockerfiles/zedwallet-ttyd) | Image that runs zedwallet with TTYD |
-| [TurtleCoin Test Suite with TTYD](dockerfiles/turtlecoin-test-suite-ttyd) | TurtleCoin Test Suite with ttyd |
+| [TurtleCoin Test Suite with TTYD](dockerfiles/turtlecoin-test-suite-ttyd) | TurtleCoin Test Suite with TTYD |
 
 Current list of Docker Compose files (more to come soon):
 
