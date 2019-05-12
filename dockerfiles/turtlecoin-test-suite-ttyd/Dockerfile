@@ -1,6 +1,7 @@
 FROM node:alpine
 
-RUN addgroup -S turtlecoin && adduser -S turtlecoin -G turtlecoin && \
+# set turtlecoin shell to zsh in order to run tmux as a non root user
+RUN addgroup -S turtlecoin && adduser -S turtlecoin -G turtlecoin -s /bin/zsh -h /home/turtlecoin && \
     apk add --no-cache 'su-exec>=0.2'
 
 # Web username
@@ -11,14 +12,19 @@ ENV WEB_USERNAME=${WEB_USERNAME}
 ARG WEB_PASSWORD
 ENV WEB_PASSWORD=${WEB_PASSWORD}
 
-# add ttyd and tmux
-RUN apk add --no-cache ttyd tmux && \
+# add ttyd, tmux and zsh (this is needed in order to run tmux from a non root user)
+RUN apk add --no-cache ttyd zsh tmux && \
+    npm config set prefix /home/turtlecoin/npm && \
     npm i -g turtlecoin-test-suite
 
-COPY ./docker-entrypoint.sh /usr/local/bin/
+WORKDIR /home/turtlecoin
+
+COPY docker-entrypoint.sh /usr/local/bin/
+COPY zshrc /home/turtlecoin/.zshrc
 
 # fix ownership
 RUN chmod 777 /usr/local/bin/docker-entrypoint.sh && \
     ln -s /usr/local/bin/docker-entrypoint.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
+
