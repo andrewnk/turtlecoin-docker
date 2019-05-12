@@ -34,9 +34,9 @@ if [[ "$1" = 'TurtleCoind' ]]; then
         set -- "$@" --load-checkpoints ${CHECKPOINTS_LOCATION}${CHECKPOINTS_FILE}
     fi
 
-    if [ "$(id -u)" = '0' ]; then
+    if [[ "$(id -u)" = '0' ]]; then
         find . \! -user turtlecoin -exec chown turtlecoin '{}' +
-        exec su-exec turtlecoin "$0" "$@"
+        exec su-exec turtlecoin "$@"
     fi
 fi
 
