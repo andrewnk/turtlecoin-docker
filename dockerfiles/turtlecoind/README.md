@@ -20,8 +20,9 @@ Build Arguments/Environment Variables:
 | FEE_ADDRESS | | Sets the convenience charge <address> for light wallets that use the daemon |
 | FEE_AMOUNT | 0 | Sets the convenience charge amount for light wallets that use the daemon |
 | HIDE_MY_PORT | false | Do not announce yourself as a peerlist candidate |
-| CHECKPOINTS_URL | https://github.com/turtlecoin/checkpoints/raw/master/checkpoints.csv | Checkpoints URL |
-| LOAD_CHECKPOINTS | /home/turtlecoin/checkpoints.csv | Specify a file <path> containing a CSV of Blockchain checkpoints for faster sync. A value of 'default' uses the built-in checkpoints. |
+| LOAD_CHECKPOINTS | true | Whether or not to load the daemon with checkpoints |
+| CHECKPOINTS_LOCATION | /home/turtlecoin/ | The checkpoints file location |
+| CHECKPOINTS_FILE | checkpoints.csv | The checkpoints file name |
 | LOG_FILE | /home/turtlecoin/TurtleCoind.log | Specify the <path> to the log file |
 | LOG_LEVEL | 2 | Specify log level |
 | P2P_BIND_IP | 0.0.0.0 | Interface IP address for the P2P service |
@@ -49,8 +50,6 @@ With a bind mount:
 docker build -t turtlecoind .
 docker run -d --name turtlecoind -v ${PWD}:/home/turtlecoin/ turtlecoind
 ```
-
-When using a bind mount you will need to manually download the checkpoints.csv file to your mounted directory.
 
 When running in detached mode, you may attach using:
 ```
