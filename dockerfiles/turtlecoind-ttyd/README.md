@@ -6,7 +6,7 @@ Build Arguments/Environment Variables:
 
 | Name | Default | Function |
 | --- | --- | --- |
-| ADD_EXCLUSIVE_NODE | | Manually add a peer to the local peer list ONLY attempt connections to it. [ip:port] |
+| ADD_EXCLUSIVE_NODE | | Manually add a peer to the local peer list ONLY attempt connections to it [ip:port] |
 | ADD_PEER | | Manually add a peer to the local peer list [ip:port] |
 | SEED_NODE | | Connect to a node to retrieve the peer list and then disconnect [ip:port] |
 | ADD_PRIORITY_NODE | | Manually add a peer to the local peer list and attempt to maintain a connection to it [ip:port] |
@@ -16,12 +16,13 @@ Build Arguments/Environment Variables:
 | DB_THREADS | 2 | Number of background threads used for compaction and flush operations |
 | DB_WRITE_BUFFER_SIZE | 256 | Size of the database write buffer in megabytes (MB) |
 | ENABLE_BLOCKEXPLORER | false | Enable the Blockchain Explorer RPC |
-| ENABLE_CORS | | Adds header 'Access-Control-Allow-Origin' to the RPC responses using the <domain>. Uses the value specified as the domain. Use * for all. |
+| ENABLE_CORS | | Adds header 'Access-Control-Allow-Origin' to the RPC responses using the <domain>. Uses the value specified as the domain. Use * for all |
 | FEE_ADDRESS | | Sets the convenience charge <address> for light wallets that use the daemon |
 | FEE_AMOUNT | 0 | Sets the convenience charge amount for light wallets that use the daemon |
 | HIDE_MY_PORT | false | Do not announce yourself as a peerlist candidate |
-| CHECKPOINTS_URL | https://github.com/turtlecoin/checkpoints/raw/master/checkpoints.csv | Checkpoints URL |
-| LOAD_CHECKPOINTS | /home/turtlecoin/checkpoints.csv | Specify a file <path> containing a CSV of Blockchain checkpoints for faster sync. A value of 'default' uses the built-in checkpoints. |
+| LOAD_CHECKPOINTS | true | Whether or not to load the daemon with checkpoints |
+| CHECKPOINTS_LOCATION | /home/turtlecoin/ | The checkpoints file location |
+| CHECKPOINTS_FILE | checkpoints.csv | The checkpoints file name |
 | LOG_FILE | /home/turtlecoin/TurtleCoind.log | Specify the <path> to the log file |
 | LOG_LEVEL | 2 | Specify log level |
 | P2P_BIND_IP | 0.0.0.0 | Interface IP address for the P2P service |
@@ -46,8 +47,6 @@ With a bind mount:
 docker build -t turtlecoind-ttyd .
 docker run -d -p 7681:7681 -p 11898:11898 -p 11897:11897 --name turtlecoind-ttyd -v ${PWD}:/home/turtlecoin/ turtlecoind-ttyd
 ```
-
-When using a bind mount you will need to manually download the checkpoints.csv file to your mounted directory.
 
 Accessing the web terminal with a username and password:
 ```
