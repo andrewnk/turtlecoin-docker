@@ -13,7 +13,7 @@ if [[ "$1" = 'ttyd' ]]; then
 
     # in order to maintain a single session and not restart the
     # container on reload or crash we run the process with tmux
-    set -- "$@" tmux new -A -s zedwallet \
+    set -- "$@" tmux new -A -s turtlecoin \
         zedwallet \
         --remote-daemon ${REMOTE_DAEMON_HOST}:${REMOTE_DAEMON_PORT}
 
