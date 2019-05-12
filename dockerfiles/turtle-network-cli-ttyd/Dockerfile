@@ -1,6 +1,6 @@
 FROM node:alpine
 
-RUN addgroup -S turtlecoin && adduser -S turtlecoin -G turtlecoin -h /home/turtlecoin && \
+RUN addgroup -S turtlecoin && adduser -S turtlecoin -G turtlecoin -s /bin/zsh -h /home/turtlecoin && \
     apk add --no-cache 'su-exec>=0.2'
 
 # Branch to clone
@@ -18,7 +18,8 @@ ENV WEB_PASSWORD=${WEB_PASSWORD}
 WORKDIR /home/turtlecoin
 
 # add binaries, clone, and delete git
-RUN apk add --no-cache ttyd tmux && \
+# zsh is needed in order to run tmux from a non root user
+RUN apk add --no-cache ttyd zsh tmux && \
     apk add --no-cache --virtual .build-deps git python-dev build-base && \
     git clone --branch ${BRANCH} --single-branch https://github.com/turtlecoin/turtle-network-cli.git . && \
     npm run trtl && \
@@ -26,6 +27,7 @@ RUN apk add --no-cache ttyd tmux && \
     apk del .build-deps
 
 COPY ./docker-entrypoint.sh /usr/local/bin/
+COPY zshrc /home/turtlecoin/.zshrc
 
 # fix ownership
 RUN chmod 777 /usr/local/bin/docker-entrypoint.sh && \
