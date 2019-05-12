@@ -28,3 +28,5 @@ RUN chmod 777 /usr/local/bin/docker-entrypoint.sh && \
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
+CMD ["ttyd"]
+
