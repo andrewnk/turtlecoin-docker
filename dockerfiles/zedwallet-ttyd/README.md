@@ -24,7 +24,7 @@ To use zedwallet navigate to http://localhost:7681 (or whatever port you pass in
 Using a remote node
 ```
 docker build -t zedwallet-ttyd .
-docker run -d -p 7681:7681 -e REMOTE_DAEMON_HOST=my-favorite-node.lol -e REMOTE_DAEMON_PORT=11898 -v turtlecoind:/home/turtlecoin/ --name zedwallet-ttyd zedwallet-ttyd
+docker run -d -p 7681:7681 -e REMOTE_DAEMON_HOST=my-favorite-node.lol -e REMOTE_DAEMON_PORT=11898 -v ${PWD}/zedwallet:/home/turtlecoin/ --name zedwallet-ttyd zedwallet-ttyd
 ```
 
 Running with a bind mount:

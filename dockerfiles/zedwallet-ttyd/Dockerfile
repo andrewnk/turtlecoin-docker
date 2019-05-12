@@ -2,7 +2,8 @@ FROM andrewnk/turtlecoin:base as base
 
 FROM alpine
 
-RUN addgroup -S turtlecoin && adduser -S turtlecoin -G turtlecoin -h /home/turtlecoin && \
+# set turtlecoin shell to zsh in order to run tmux as a non root user
+RUN addgroup -S turtlecoin && adduser -S turtlecoin -G turtlecoin -s /bin/zsh -h /home/turtlecoin && \
     apk add --no-cache 'su-exec>=0.2'
 
 # Remote host to connect to
@@ -21,8 +22,9 @@ ENV WEB_USERNAME=${WEB_USERNAME}
 ARG WEB_PASSWORD
 ENV WEB_PASSWORD=${WEB_PASSWORD}
 
-# add library required to run binary, ttyd, and tmux
-RUN apk add --no-cache libucontext-dev ttyd tmux
+# add library required to run binary, ttyd, tmux, and
+# zsh (this is needed in order to run tmux from a non root user) and fix ownership
+RUN apk add --no-cache libucontext-dev ttyd tmux zsh
 
 #uncomment when the ttyd ssl bug is fixed
 #RUN apk add --no-cache openssl && \
@@ -46,10 +48,12 @@ VOLUME /home/turtlecoin
 WORKDIR /home/turtlecoin
 
 COPY ./docker-entrypoint.sh /usr/local/bin/
+COPY zshrc /home/turtlecoin/.zshrc
 
 # fix ownership
-RUN chown -R turtlecoin:turtlecoin . && \
-    chmod 777 /usr/local/bin/docker-entrypoint.sh && \
+RUN chmod 777 /usr/local/bin/docker-entrypoint.sh && \
     ln -s /usr/local/bin/docker-entrypoint.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
+
+CMD ["ttyd"]
