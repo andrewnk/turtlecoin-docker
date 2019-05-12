@@ -1,6 +1,6 @@
 # Turtle Network CLI With TTYD Docker Image
 
-This is a dockerized image of the [Turtle Network CLI](https://github.com/turtlecoin/turtle-network-cli) running on apline with ttyd. The process is run within tmux to persist the session in case the page reloads or crashes.
+This is a dockerized version of the [Turtle Network CLI](https://github.com/turtlecoin/turtle-network-cli) running on apline with ttyd. The process is run within tmux to persist the session in case the page reloads or crashes.
 
 Build Arguments/Environment Variables:
 
