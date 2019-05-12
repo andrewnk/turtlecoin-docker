@@ -11,9 +11,10 @@ Current list of Docker images (more to come soon):
 | [Base](dockerfiles/base) | Contains all TurtleCoin binaries and is meant to be a starting point to build from |
 | [TurtleCoind](dockerfiles/turtlecoind) | Image that runs TurtleCoind |
 | [TurtleCoind with TTYD](dockerfiles/turtlecoind-ttyd) | Image that runs TurtleCoind with TTYD |
+| [TurtleCoin Test Suite with TTYD](dockerfiles/turtlecoin-test-suite-ttyd) | Image that runs TurtleCoin Test Suite with TTYD |
+| [Turtle Network CLI With TTYD Docker Image](dockerfiles/turtle-network-cli-ttyd) | Image that runs Turtle Network CLI with TTYD |
 | [zedwallet](dockerfiles/zedwallet) | Image that runs zedwallet |
 | [zedwallet with TTYD](dockerfiles/zedwallet-ttyd) | Image that runs zedwallet with TTYD |
-| [TurtleCoin Test Suite with TTYD](dockerfiles/turtlecoin-test-suite-ttyd) | TurtleCoin Test Suite with TTYD |
 
 Current list of Docker Compose files (more to come soon):
 
