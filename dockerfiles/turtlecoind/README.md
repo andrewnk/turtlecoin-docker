@@ -63,7 +63,7 @@ This image is also hosted on [Docker Hub](https://cloud.docker.com/u/andrewnk/re
 To run from the Docker Hub image:
 
 ```
-docker run -d -p 11898:11898 -p 11897:11897 --name turtlecoind andrewnk/turtlecoin:turtlecoind
+docker run -d -p 11898:11898 -p 11897:11897 --name turtlecoind -v turtlecoind:/home/turtlecoin/ andrewnk/turtlecoin:turtlecoind
 ```
 
 To use from the Docker Hub image:
