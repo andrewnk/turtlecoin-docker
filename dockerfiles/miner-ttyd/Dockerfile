@@ -68,7 +68,6 @@ RUN apk add --no-cache libucontext-dev ttyd tmux zsh
 #copy binary from base
 COPY --from=base /miner /usr/local/bin
 
-VOLUME /home/turtlecoin
 WORKDIR /home/turtlecoin
 
 COPY ./docker-entrypoint.sh /usr/local/bin/

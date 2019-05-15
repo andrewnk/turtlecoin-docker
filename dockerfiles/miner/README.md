@@ -1,6 +1,6 @@
-# TurtleCoin miner With TTYD Docker Image
+# TurtleCoin Miner Docker Image
 
-This image pulls the binary from the base image and runs the miner on apline using ttyd. The process is run within tmux to persist the session in case the page reloads or crashes.
+This image pulls the binary from the base image and runs the miner on apline.
 
 Build Arguments/Environment Variables:
 
@@ -33,7 +33,7 @@ docker run -d -p 7681:7681 -e ADDRESS=TRTLuz2tDXUDHSAPzB1bZnQU9qyGnN5cX6htZZzjxP
 
 Accessing the web terminal with a username and password:
 ```
-docker run -d -p 7681:7681 -e WEB_USERNAME=Slow -e WEB_PASSWORD=AndSteady --name miner -v miner:/home/turtlecoin/ miner
+docker run -d -p 7681:7681 -e WEB_USERNAME=Slow -e WEB_PASSWORD=AndSteady --name miner miner
 ```
 
 This image is also hosted on [Docker Hub](https://cloud.docker.com/u/andrewnk/repository/docker/andrewnk/turtlecoin).
