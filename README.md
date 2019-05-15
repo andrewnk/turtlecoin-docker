@@ -9,6 +9,8 @@ Current list of Docker images (more to come soon):
 | Name | Description |
 | --- | --- |
 | [Base](dockerfiles/base) | Contains all TurtleCoin binaries and is meant to be a starting point to build from |
+| [Miner](dockerfiles/miner) | Image that runs the TurtleCoin Miner|
+| [Miner with TTYD](dockerfiles/miner-ttyd) | Image that runs the TurtleCoin Miner with TTYD |
 | [Turtle CLI py With TTYD](dockerfiles/turtle-cli-py-ttyd) | Image that runs Turtle CLI py With TTYD |
 | [TurtleCoind](dockerfiles/turtlecoind) | Image that runs TurtleCoind |
 | [TurtleCoind with TTYD](dockerfiles/turtlecoind-ttyd) | Image that runs TurtleCoind with TTYD |
