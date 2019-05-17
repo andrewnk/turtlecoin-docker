@@ -41,8 +41,8 @@ if [[ "$1" = 'ttyd' ]]; then
     if [[ "$LOAD_CHECKPOINTS" = true ]]; then
         # if checkpoints file doesn't exist then download
         if [[ ! -f ${CHECKPOINTS_LOCATION}${CHECKPOINTS_FILE} ]]; then
-            wget -P ${CHECKPOINTS_LOCATION} -O ${CHECKPOINTS_FILE} https://cloudflare-ipfs.com/ipfs/QmWQL3Z94QQZWSyxWLPh734bkMEpdVKM4Cf6Tr3Yb7B9S5
-        fi
+            wget https://raw.githubusercontent.com/turtlecoin/checkpoints/master/checkpoints.csv https://raw.githubusercontent.com/turtlecoin/checkpoints/master/checkpoints-1M.csv  -P ${CHECKPOINTS_LOCATION} -O ${CHECKPOINTS_FILE}
+	fi
 
         set -- "$@" --load-checkpoints ${CHECKPOINTS_LOCATION}${CHECKPOINTS_FILE}
     fi
