@@ -1,4 +1,4 @@
-# TurtleCoin TurtleCoind Docker Image
+# TurtleCoind-ha Docker Image
 
 This image pulls the TurtleCoind binary from the base image, installs pm2 and [turtlecoind-ha](https://github.com/turtlecoin/turtlecoind-ha), downloads the checkpoints, and runs TurtleCoind via turtlecoind-ha and pm2 (along with Winston for logging) on apline.
 
@@ -23,7 +23,7 @@ With a bind mount:
 
 ```
 docker build -t turtlecoind-ha .
-docker run -d --name turtlecoind-ha -v ${PWD}:/home/turtlecoin/ turtlecoind-ha
+docker run -d -p 11897:11897 --name turtlecoind-ha -v ${PWD}:/home/turtlecoin/ turtlecoind-ha
 ```
 
 When running in detached mode, you may attach using:
