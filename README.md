@@ -13,8 +13,9 @@ Current list of Docker images (more to come soon):
 | [Miner with TTYD](dockerfiles/miner-ttyd) | Runs the TurtleCoin Miner with TTYD |
 | [Turtle CLI py With TTYD](dockerfiles/turtle-cli-py-ttyd) | Runs Turtle CLI py With TTYD |
 | [TurtleCoind](dockerfiles/turtlecoind) | Runs TurtleCoind |
-| [TurtleCoind-ha](dockerfiles/turtlecoind-ha) | Runs TurtleCoind with turtlecoind-ha and pm2 |
 | [TurtleCoind with TTYD](dockerfiles/turtlecoind-ttyd) | Runs TurtleCoind with TTYD |
+| [TurtleCoind-ha](dockerfiles/turtlecoind-ha) | Runs TurtleCoind with turtlecoind-ha and pm2 |
+| [TurtleCoind-ha with TTYD](dockerfiles/turtlecoind-ha-ttyd) | Runs TurtleCoind with turtlecoind-ha and pm2 on with TTYD |
 | [TurtleCoin Test Suite with TTYD](dockerfiles/turtlecoin-test-suite-ttyd) | Runs TurtleCoin Test Suite with TTYD |
 | [Turtle Network CLI With TTYD ](dockerfiles/turtle-network-cli-ttyd) | Runs Turtle Network CLI with TTYD |
 | [TurtleCoin Wallet NodeJS With TTYD ](dockerfiles/turtlecoin-wallet-nodejs-ttyd) | Runs TurtleCoin Wallet NodeJS with TTYD |
