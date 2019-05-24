@@ -2,14 +2,11 @@
 
 This is a dockerization of the [TurtleCoin Wallet NodeJs](https://github.com/turtlecoin/turtlecoin-wallet-nodejs) running on apline with ttyd. The process is run within tmux to persist the session in case the page reloads or crashes.
 
-Build Arguments/Environment Variables:
+## Table of Contents
+1. [Examples](#examples)
+2. [Build Args/Env Variables](#build-arguments-and-environment-variables)
 
-| Name | Default | Function |
-| --- | --- | --- |
-| WEB_USERNAME |  | Username to access the web terminal |
-| WEB_PASSWORD |  | Password to access the web terminal |
-
-Examples:
+## Examples:
 ```
 docker build -t turtlecoin-wallet-nodejs-ttyd .
 docker run -d -p 7681:7681 --name turtlecoin-wallet-nodejs-ttyd -v divine:/home/turtlecoin turtlecoin-wallet-nodejs-ttyd
@@ -42,3 +39,10 @@ To use from the Docker Hub image:
 ```
 FROM andrewnk/turtlecoin:turtlecoin-wallet-nodejs-ttyd as turtlecoin-wallet-nodejs-ttyd
 ```
+
+## Build Arguments and Environment Variables:
+
+| Name | Default | Function |
+| --- | --- | --- |
+| WEB_USERNAME |  | Username to access the web terminal |
+| WEB_PASSWORD |  | Password to access the web terminal |

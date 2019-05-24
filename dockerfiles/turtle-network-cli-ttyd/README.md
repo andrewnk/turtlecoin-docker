@@ -2,15 +2,11 @@
 
 This is a dockerized version of the [Turtle Network CLI](https://github.com/turtlecoin/turtle-network-cli) running on apline with ttyd. The process is run within tmux to persist the session in case the page reloads or crashes.
 
-Build Arguments/Environment Variables:
+## Table of Contents
+1. [Examples](#examples)
+2. [Build Args/Env Variables](#build-arguments-and-environment-variables)
 
-| Name | Default | Function |
-| --- | --- | --- |
-| BRANCH | master | The branch to clone |
-| WEB_USERNAME |  | Username to access the web terminal |
-| WEB_PASSWORD |  | Password to access the web terminal |
-
-Examples:
+## Examples:
 ```
 docker build -t turtle-network-cli-ttyd .
 docker run -d -p 7681:7681 --name turtle-network-cli-ttyd turtle-network-cli-ttyd
@@ -38,3 +34,11 @@ To use from the Docker Hub image:
 ```
 FROM andrewnk/turtlecoin:turtle-network-cli-ttyd as turtle-network-cli-ttyd
 ```
+
+## Build Arguments and Environment Variables:
+
+| Name | Default | Function |
+| --- | --- | --- |
+| BRANCH | master | The branch to clone |
+| WEB_USERNAME |  | Username to access the web terminal |
+| WEB_PASSWORD |  | Password to access the web terminal |

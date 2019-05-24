@@ -2,15 +2,11 @@
 
 This is a dockerized version of the [Turtle CLI py](https://github.com/turtlecoin/turtlecoin-cli-py) running on apline with ttyd. The process is run within tmux to persist the session in case the page reloads or crashes.
 
-Build Arguments/Environment Variables:
+## Table of Contents
+1. [Examples](#examples)
+2. [Build Args/Env Variables](#build-arguments-and-environment-variables)
 
-| Name | Default | Function |
-| --- | --- | --- |
-| BRANCH | master | The branch to clone |
-| WEB_USERNAME |  | Username to access the web terminal |
-| WEB_PASSWORD |  | Password to access the web terminal |
-
-Examples:
+## Examples:
 ```
 docker build -t turtle-cli-py-ttyd .
 docker run -d -p 7681:7681 --name turtle-cli-py-ttyd turtle-cli-py-ttyd
@@ -38,3 +34,11 @@ To use from the Docker Hub image:
 ```
 FROM andrewnk/turtlecoin:turtle-cli-py-ttyd as turtle-cli-py-ttyd
 ```
+
+## Build Arguments and Environment Variables:
+
+| Name | Default | Function |
+| --- | --- | --- |
+| BRANCH | master | The branch to clone |
+| WEB_USERNAME |  | Username to access the web terminal |
+| WEB_PASSWORD |  | Password to access the web terminal |

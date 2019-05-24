@@ -2,14 +2,11 @@
 
 This is a dockerization of the [TurtleCoin Test Suite](https://github.com/turtlecoin/turtlecoin-test-suite) running on apline with ttyd. The process is run within tmux to persist the session in case the page reloads or crashes.
 
-Build Arguments/Environment Variables:
+## Table of Contents
+1. [Examples](#examples)
+2. [Build Args/Env Variables](#build-arguments-and-environment-variables)
 
-| Name | Default | Function |
-| --- | --- | --- |
-| WEB_USERNAME |  | Username to access the web terminal |
-| WEB_PASSWORD |  | Password to access the web terminal |
-
-Examples:
+## Examples:
 ```
 docker build -t turtlecoin-test-suite-ttyd .
 docker run -d -p 7681:7681 --name turtlecoin-test-suite-ttyd turtlecoin-test-suite-ttyd
@@ -36,3 +33,10 @@ To use from the Docker Hub image:
 ```
 FROM andrewnk/turtlecoin:turtlecoin-test-suite-ttyd as turtlecoin-test-suite-ttyd
 ```
+
+## Build Arguments and Environment Variables:
+
+| Name | Default | Function |
+| --- | --- | --- |
+| WEB_USERNAME |  | Username to access the web terminal |
+| WEB_PASSWORD |  | Password to access the web terminal |
