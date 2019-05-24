@@ -34,7 +34,7 @@ Accessing the web terminal with a username and password:
 docker run -d -p 7681:7681 -e WEB_USERNAME=Slow -e WEB_PASSWORD=AndSteady --name zedwallet-ttyd -v zedwallet:/home/turtlecoin/ zedwallet-ttyd
 ```
 
-This image is also hosted on [Docker Hub](https://cloud.docker.com/u/andrewnk/repository/docker/andrewnk/turtlecoin).
+This image is also hosted on [Docker Hub](https://hub.docker.com/r/andrewnk/turtlecoin).
 
 To run from the Docker Hub image:
 

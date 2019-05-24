@@ -28,4 +28,4 @@ Current list of Docker Compose files (more to come soon):
 | --- | --- |
 | [TurtleCoind and zedwallet with TTYD](docker-compose/turtlecoind-zedwallet-ttyd) | Spins up two containers, TurtleCoind and zedwallet, and shares the terminals over the web via TTYD |
 
-All images are stored on [Docker Hub](https://cloud.docker.com/u/andrewnk/repository/docker/andrewnk/turtlecoin)
+All images are stored on [Docker Hub](https://hub.docker.com/r/andrewnk/turtlecoin)

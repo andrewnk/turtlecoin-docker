@@ -22,7 +22,7 @@ FROM alpine
 COPY --from=base /zedwallet /my/location
 ```
 
-This image is also hosted on [Docker Hub](https://cloud.docker.com/u/andrewnk/repository/docker/andrewnk/turtlecoin). To copy from the Docker Hub image:
+This image is also hosted on [Docker Hub](https://hub.docker.com/r/andrewnk/turtlecoin). To copy from the Docker Hub image:
 
 ```
 FROM andrewnk/turtlecoin:base as base

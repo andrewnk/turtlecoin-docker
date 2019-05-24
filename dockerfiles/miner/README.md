@@ -25,7 +25,7 @@ docker attach miner
 
 To detach, press CTRL+p+q
 
-This image is also hosted on [Docker Hub](https://cloud.docker.com/u/andrewnk/repository/docker/andrewnk/turtlecoin).
+This image is also hosted on [Docker Hub](https://hub.docker.com/r/andrewnk/turtlecoin).
 
 To run from the Docker Hub image (use your own address):
 
