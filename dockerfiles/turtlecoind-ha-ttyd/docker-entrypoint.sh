@@ -1,7 +1,6 @@
 #!/bin/sh
 set -e
 
-
 if [[ "$1" = 'ttyd' ]]; then
 
     if [[ ! -z "$WEB_USERNAME" && ! -z "$WEB_PASSWORD" ]]; then
@@ -9,7 +8,7 @@ if [[ "$1" = 'ttyd' ]]; then
     fi
 
     set -- "$@" tmux new -A -s turtlecoin \
-                    pm2-runtime start turtlecoind-ha/turtlecoind-ha.js --name turtlecoind
+                    pm2-runtime start ../turtlecoind-ha/turtlecoind-ha.js --name turtlecoind
 
     if [[ ! -f ${CHECKPOINTS_LOCATION}${CHECKPOINTS_FILE} ]]; then
         wget https://raw.githubusercontent.com/turtlecoin/checkpoints/master/checkpoints.csv https://raw.githubusercontent.com/turtlecoin/checkpoints/master/checkpoints-1M.csv -P ${CHECKPOINTS_LOCATION} -O ${CHECKPOINTS_FILE}

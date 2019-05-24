@@ -62,7 +62,7 @@ ARG HIDE_MY_PORT=false
 ENV HIDE_MY_PORT=${HIDE_MY_PORT}
 
 # The checkpoints file location
-ARG CHECKPOINTS_LOCATION=/home/turtlecoin/
+ARG CHECKPOINTS_LOCATION=/home/turtlecoin/turtlecoind/
 ENV CHECKPOINTS_LOCATION=${CHECKPOINTS_LOCATION}
 
 # The checkpoints file name
@@ -121,8 +121,8 @@ RUN apk add --no-cache libucontext-dev nodejs-current npm && \
     chmod 777 /usr/local/bin/docker-entrypoint.sh && \
     ln -s /usr/local/bin/docker-entrypoint.sh
 
-WORKDIR /home/turtlecoin
-VOLUME /home/turtlecoin
+WORKDIR /home/turtlecoin/turtlecoind
+VOLUME /home/turtlecoin/turtlecoind
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 

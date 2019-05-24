@@ -7,6 +7,7 @@ const path = require('path')
 
 let daemon = new TurtleCoind({
   path: '/usr/local/bin/TurtleCoind',
+  dataDir: '~/turtlecoind/.TurtleCoin',
   loadCheckpoints: env.CHECKPOINTS_LOCATION + env.CHECKPOINTS_FILE || false,
   exclusiveNodes: env.ADD_EXCLUSIVE_NODE,
   peers: env.ADD_PEER || false,

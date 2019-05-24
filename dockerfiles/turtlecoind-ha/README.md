@@ -9,21 +9,21 @@ This image pulls the TurtleCoind binary from the base image, installs pm2 and [t
 ## Examples:
 ```
 docker build -t turtlecoind-ha .
-docker run -it -p 11897:11897 --name turtlecoind-ha -v turtlecoind:/home/turtlecoin/ turtlecoind-ha
+docker run -it -p 11897:11897 --name turtlecoind-ha -v turtlecoind:/home/turtlecoin/turtlecoind turtlecoind-ha
 ```
 
 or:
 
 ```
 docker build -t turtlecoind-ha .
-docker run -d -p 11897:11897 --name turtlecoind-ha -v turtlecoind:/home/turtlecoin/ turtlecoind-ha
+docker run -d -p 11897:11897 --name turtlecoind-ha -v turtlecoind:/home/turtlecoin/turtlecoind turtlecoind-ha
 ```
 
 With a bind mount:
 
 ```
 docker build -t turtlecoind-ha .
-docker run -d -p 11897:11897 --name turtlecoind-ha -v ${PWD}:/home/turtlecoin/ turtlecoind-ha
+docker run -d -p 11897:11897 --name turtlecoind-ha -v ${PWD}:/home/turtlecoin/turtlecoind turtlecoind-ha
 ```
 
 When running in detached mode, you may attach using:
@@ -38,7 +38,7 @@ This image is also hosted on [Docker Hub](https://cloud.docker.com/u/andrewnk/re
 To run from the Docker Hub image:
 
 ```
-docker run -d -p 11897:11897 --name turtlecoind-ha -v turtlecoind:/home/turtlecoin/ andrewnk/turtlecoin:turtlecoind-ha
+docker run -d -p 11897:11897 --name turtlecoind-ha -v turtlecoind:/home/turtlecoin/turtlecoind andrewnk/turtlecoin:turtlecoind-ha
 ```
 
 To use from the Docker Hub image:

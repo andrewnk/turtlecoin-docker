@@ -63,7 +63,7 @@ ARG HIDE_MY_PORT=false
 ENV HIDE_MY_PORT=${HIDE_MY_PORT}
 
 # The checkpoints file location
-ARG CHECKPOINTS_LOCATION=/home/turtlecoin/
+ARG CHECKPOINTS_LOCATION=/home/turtlecoin/turtlecoind/
 ENV CHECKPOINTS_LOCATION=${CHECKPOINTS_LOCATION}
 
 # The checkpoints file name
@@ -100,8 +100,6 @@ ENV RPC_BIND_PORT=${RPC_BIND_PORT}
 
 # copy binary from builder
 COPY --from=base /TurtleCoind /usr/local/bin
-COPY ./docker-entrypoint.sh /usr/local/bin/
-COPY zshrc /home/turtlecoin/.zshrc
 
 WORKDIR /home/turtlecoin/turtlecoind-ha
 COPY ./turtlecoind-ha.js ./log.js /home/turtlecoin/turtlecoind-ha/
@@ -119,12 +117,16 @@ RUN apk add --no-cache libucontext-dev nodejs-current npm ttyd zsh tmux && \
     npm install -g pm2 && \
     pm2 install pm2-logrotate && \
     npm install winston && \
-    apk del .build-deps && \
-    chmod 777 /usr/local/bin/docker-entrypoint.sh && \
-    ln -s /usr/local/bin/docker-entrypoint.sh
+    apk del .build-deps
 
-WORKDIR /home/turtlecoin
-VOLUME /home/turtlecoin
+VOLUME /home/turtlecoin/turtlecoind
+WORKDIR /home/turtlecoin/turtlecoind
+
+COPY ./docker-entrypoint.sh /usr/local/bin/
+COPY zshrc /home/turtlecoin/.zshrc
+
+RUN chmod 777 /usr/local/bin/docker-entrypoint.sh && \
+    ln -s /usr/local/bin/docker-entrypoint.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 

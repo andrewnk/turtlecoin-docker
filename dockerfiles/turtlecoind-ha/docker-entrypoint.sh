@@ -3,7 +3,7 @@ set -e
 
 if [[ "$1" = 'pm2-runtime' ]]; then
 
-    set -- "$@" start turtlecoind-ha/turtlecoind-ha.js --name turtlecoind
+    set -- "$@" start ../turtlecoind-ha/turtlecoind-ha.js --name turtlecoind
 
     if [[ ! -f ${CHECKPOINTS_LOCATION}${CHECKPOINTS_FILE} ]]; then
         wget https://raw.githubusercontent.com/turtlecoin/checkpoints/master/checkpoints.csv https://raw.githubusercontent.com/turtlecoin/checkpoints/master/checkpoints-1M.csv -P ${CHECKPOINTS_LOCATION} -O ${CHECKPOINTS_FILE}
