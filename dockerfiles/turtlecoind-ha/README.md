@@ -2,8 +2,9 @@
 
 This image pulls the TurtleCoind binary from the base image, installs pm2 and [turtlecoind-ha](https://github.com/turtlecoin/turtlecoind-ha), downloads the checkpoints, and runs TurtleCoind via turtlecoind-ha and pm2 (along with Winston for logging) on apline.
 
-[Examples](#examples)
-[Build Args/Env Variables](#build-arguments-and-environment-variables)
+## Table of Contents
+1. [Examples](#examples)
+2. [Build Args/Env Variables](#build-arguments-and-environment-variables)
 
 ## Examples:
 ```
