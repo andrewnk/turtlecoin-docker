@@ -125,8 +125,7 @@ WORKDIR /home/turtlecoin/turtlecoind
 COPY ./docker-entrypoint.sh /usr/local/bin/
 COPY zshrc /home/turtlecoin/.zshrc
 
-RUN chmod 777 /usr/local/bin/docker-entrypoint.sh && \
-    ln -s /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 

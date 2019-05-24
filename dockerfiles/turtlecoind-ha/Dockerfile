@@ -118,8 +118,7 @@ RUN apk add --no-cache libucontext-dev nodejs-current npm && \
     pm2 install pm2-logrotate && \
     npm install winston && \
     apk del .build-deps && \
-    chmod 777 /usr/local/bin/docker-entrypoint.sh && \
-    ln -s /usr/local/bin/docker-entrypoint.sh
+    chmod +x /usr/local/bin/docker-entrypoint.sh
 
 WORKDIR /home/turtlecoin/turtlecoind
 VOLUME /home/turtlecoin/turtlecoind
