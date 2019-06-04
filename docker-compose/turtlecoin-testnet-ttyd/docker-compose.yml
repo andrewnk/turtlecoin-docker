@@ -1,0 +1,73 @@
+version: "3"
+
+services:
+  # this will act as our main node to mine against
+  turtlecoind-node1:
+    image: testnet
+    container_name: turtlecoind-node1
+    networks:
+      - turtlecoin
+    environment:
+      - DELETE_FOLDER=true
+    restart: always
+    command: su-exec turtlecoin ttyd tmux new -A -s turtlecoin-node1 TurtleCoind --rpc-bind-ip 0.0.0.0
+    ports:
+      - 8080:7681
+    tty: true
+    volumes:
+      - ${PWD}/turtlecoin1:/home/turtlecoin
+
+  # secondary node
+  turtlecoind-node2:
+    image: testnet
+    container_name: turtlecoind-node2
+    networks:
+      - turtlecoin
+    environment:
+      - DELETE_FOLDER=true
+    restart: always
+    command: su-exec turtlecoin ttyd tmux new -A -s turtlecoin-node2 TurtleCoind
+    ports:
+      - 8181:7681
+    volumes:
+      - ${PWD}/turtlecoin2:/home/turtlecoin
+
+  # tertiary node
+  turtlecoind-node3:
+    image: testnet
+    container_name: turtlecoind-node3
+    networks:
+      - turtlecoin
+    environment:
+      - DELETE_FOLDER=true
+    restart: always
+    command: su-exec turtlecoin ttyd tmux new -A -s turtlecoin-node3 TurtleCoind
+    ports:
+      - 8282:7681
+    volumes:
+      - ${PWD}/turtlecoin3:/home/turtlecoin
+
+  # miner
+  turtlecoind-miner:
+    image: testnet
+    container_name: turtlecoind-miner
+    networks:
+      - turtlecoin
+    environment:
+      - DELETE_FOLDER=true
+    depends_on:
+      - turtlecoind-node1
+      - turtlecoind-node2
+      - turtlecoind-node3
+    restart: always
+    command: su-exec turtlecoin ttyd tmux new -A -s turtlecoin-miner miner --daemon-address turtlecoind-node1:11898 --address TRTLuxveoVD7dUDHzyyFZxhRBoMq4baP2g7wdBiAMLsSggKeta2b66AGtr7sv5edbW9y4VKYcACybAbG5VUUGerqKWPvvUGAFhW
+    ports:
+      - 8383:7681
+    volumes:
+      - ${PWD}/miner:/home/turtlecoin
+
+networks:
+  turtlecoin:
+    driver: bridge
+    ipam:
+      driver: default
