@@ -20,5 +20,3 @@ done
 
 # next we clear the checkpoints file
 perl -i -0777 -0pe "s/(CHECKPOINTS\s*\=\s*{)(.*?)(\s*}\s*;)/\1\3/s" src/config/CryptoNoteCheckpoints.h
-
-cat src/config/CryptoNoteCheckpoints.h
