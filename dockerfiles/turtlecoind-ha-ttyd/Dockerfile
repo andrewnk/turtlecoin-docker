@@ -115,6 +115,7 @@ RUN apk add --no-cache libucontext-dev nodejs npm ttyd zsh tmux && \
     export PATH="$PATH:/home/turtlecoin/npm/bin" && \
     export NODE_PATH="$NODE_PATH:/home/turtlecoin/npm/lib/node_modules" && \
     npm install -g pm2 && \
+    npm install @pm2/io --save && \
     pm2 install pm2-logrotate && \
     npm install winston && \
     apk del .build-deps
