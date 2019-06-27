@@ -105,7 +105,7 @@ WORKDIR /home/turtlecoin/turtlecoind-ha
 COPY ./turtlecoind-ha.js ./log.js /home/turtlecoin/turtlecoind-ha/
 
 # add library required to run binary and fix ownership
-RUN apk add --no-cache libucontext-dev nodejs-current npm ttyd zsh tmux && \
+RUN apk add --no-cache libucontext-dev nodejs npm ttyd zsh tmux && \
     apk add --no-cache --virtual .build-deps alpine-sdk python git && \
     git init && \
     git remote add origin https://github.com/turtlecoin/turtlecoind-ha.git && \
