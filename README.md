@@ -19,6 +19,8 @@ Current list of Docker images (more to come soon):
 | [TurtleCoin Test Suite with TTYD](dockerfiles/turtlecoin-test-suite-ttyd) | Runs TurtleCoin Test Suite with TTYD |
 | [Turtle Network CLI With TTYD ](dockerfiles/turtle-network-cli-ttyd) | Runs Turtle Network CLI with TTYD |
 | [TurtleCoin Wallet NodeJS With TTYD ](dockerfiles/turtlecoin-wallet-nodejs-ttyd) | Runs TurtleCoin Wallet NodeJS with TTYD |
+| [violetminer](dockerfiles/violetminer) | Runs violetminer |
+| [violetminer with TTYD](dockerfiles/violetminer-ttyd) | Runs violetminer with TTYD |
 | [zedwallet](dockerfiles/zedwallet) | Runs zedwallet |
 | [zedwallet-beta](dockerfiles/zedwallet-beta) | Runs zedwallet-beta |
 | [zedwallet with TTYD](dockerfiles/zedwallet-ttyd) | Runs zedwallet with TTYD |
