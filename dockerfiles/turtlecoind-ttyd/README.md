@@ -49,6 +49,7 @@ FROM andrewnk/turtlecoin:turtlecoind-ttyd as turtlecoind-ttyd
 | SEED_NODE | | Connect to a node to retrieve the peer list and then disconnect [ip:port] |
 | ADD_PRIORITY_NODE | | Manually add a peer to the local peer list and attempt to maintain a connection to it [ip:port] |
 | ALLOW_LOCAL_IP | false | Allow the local IP to be added to the peer list |
+| DB_ENABLE_COMPRESSION | true | Enable lz4 compression |
 | DB_MAX_OPEN_FILES | 100 | Number of files that can be used by the database at one time |
 | DB_READ_BUFFER_SIZE | 10 | Size of the database read cache in megabytes (MB) |
 | DB_THREADS | 2 | Number of background threads used for compaction and flush operations |
