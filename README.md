@@ -20,7 +20,9 @@ Current list of Docker images (more to come soon):
 | [Turtle Network CLI With TTYD ](dockerfiles/turtle-network-cli-ttyd) | Runs Turtle Network CLI with TTYD |
 | [TurtleCoin Wallet NodeJS With TTYD ](dockerfiles/turtlecoin-wallet-nodejs-ttyd) | Runs TurtleCoin Wallet NodeJS with TTYD |
 | [zedwallet](dockerfiles/zedwallet) | Runs zedwallet |
+| [zedwallet-beta](dockerfiles/zedwallet-beta) | Runs zedwallet-beta |
 | [zedwallet with TTYD](dockerfiles/zedwallet-ttyd) | Runs zedwallet with TTYD |
+| [zedwallet-beta with TTYD](dockerfiles/zedwallet-beta-ttyd) | Runs zedwallet-beta with TTYD |
 
 Current list of Docker Compose files (more to come soon):
 
