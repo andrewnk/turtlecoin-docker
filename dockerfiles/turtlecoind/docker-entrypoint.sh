@@ -25,6 +25,10 @@ if [[ "$1" = 'TurtleCoind' ]]; then
             --fee-address ${FEE_ADDRESS} \
             --fee-amount ${FEE_AMOUNT} "$@"
 
+    if [[ "$DB_ENABLE_COMPRESSION" = true ]]; then
+        set -- "$@" --db-enable-compression
+    fi
+
     if [[ "$LOAD_CHECKPOINTS" = true ]]; then
         # if checkpoints file doesn't exist then download
         if [[ ! -f ${CHECKPOINTS_LOCATION}${CHECKPOINTS_FILE} ]]; then

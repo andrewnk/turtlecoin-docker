@@ -61,6 +61,7 @@ FROM andrewnk/turtlecoin:turtlecoind as turtlecoind
 | DB_THREADS | 2 | Number of background threads used for compaction and flush operations |
 | DB_WRITE_BUFFER_SIZE | 256 | Size of the database write buffer in megabytes (MB) |
 | ENABLE_BLOCKEXPLORER | false | Enable the Blockchain Explorer RPC |
+| DB_ENABLE_COMPRESSION | true | Enable lz4 compression |
 | ENABLE_CORS | | Adds header 'Access-Control-Allow-Origin' to the RPC responses using the <domain>. Uses the value specified as the domain. Use * for all. |
 | FEE_ADDRESS | | Sets the convenience charge <address> for light wallets that use the daemon |
 | FEE_AMOUNT | 0 | Sets the convenience charge amount for light wallets that use the daemon |
