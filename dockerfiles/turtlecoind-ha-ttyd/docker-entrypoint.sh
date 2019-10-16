@@ -11,7 +11,7 @@ if [[ "$1" = 'ttyd' ]]; then
                     pm2-runtime start ../turtlecoind-ha/turtlecoind-ha.js --name turtlecoind
 
     if [[ ! -f ${CHECKPOINTS_LOCATION}${CHECKPOINTS_FILE} ]]; then
-        wget https://raw.githubusercontent.com/turtlecoin/checkpoints/master/checkpoints.csv https://raw.githubusercontent.com/turtlecoin/checkpoints/master/checkpoints-1M.csv -P ${CHECKPOINTS_LOCATION} -O ${CHECKPOINTS_FILE}
+        curl http://checkpoints.turtlecoin.dev -o ${CHECKPOINTS_LOCATION}${CHECKPOINTS_FILE}
     fi
 
     if [[ "$(id -u)" = '0' ]]; then
