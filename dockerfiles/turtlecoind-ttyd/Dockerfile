@@ -119,7 +119,7 @@ COPY --from=base /TurtleCoind /usr/local/bin
 
 # add library required to run binary, ttyd, tmux, and 
 # zsh (this is needed in order to run tmux from a non root user) and fix ownership
-RUN apk add --no-cache libucontext-dev ttyd zsh tmux
+RUN apk add --no-cache libucontext-dev ttyd zsh tmux curl
 
 #uncomment when the ttyd ssl bug is fixed
 #RUN apk add --no-cache openssl && \
