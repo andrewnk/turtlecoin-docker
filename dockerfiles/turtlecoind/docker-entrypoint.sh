@@ -32,7 +32,7 @@ if [[ "$1" = 'TurtleCoind' ]]; then
     if [[ "$LOAD_CHECKPOINTS" = true ]]; then
         # if checkpoints file doesn't exist then download
         if [[ ! -f ${CHECKPOINTS_LOCATION}${CHECKPOINTS_FILE} ]]; then
-            wget https://raw.githubusercontent.com/turtlecoin/checkpoints/master/checkpoints.csv https://raw.githubusercontent.com/turtlecoin/checkpoints/master/checkpoints-1M.csv -P ${CHECKPOINTS_LOCATION} -O ${CHECKPOINTS_FILE}
+            curl http://checkpoints.turtlecoin.dev -o ${CHECKPOINTS_LOCATION}${CHECKPOINTS_FILE}
         fi
 
         set -- "$@" --load-checkpoints ${CHECKPOINTS_LOCATION}${CHECKPOINTS_FILE}

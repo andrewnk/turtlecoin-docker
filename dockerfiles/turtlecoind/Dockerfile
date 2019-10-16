@@ -109,7 +109,7 @@ ENV RPC_BIND_PORT=${RPC_BIND_PORT}
 COPY --from=base /TurtleCoind /usr/local/bin
 
 # add library required to run binary and fix ownership
-RUN apk add --no-cache libucontext-dev
+RUN apk add --no-cache libucontext-dev curl
 
 VOLUME /home/turtlecoin
 WORKDIR /home/turtlecoin
