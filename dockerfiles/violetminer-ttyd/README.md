@@ -22,7 +22,7 @@ This image is also hosted on [Docker Hub](https://hub.docker.com/r/andrewnk/turt
 To run from the Docker Hub image:
 
 ```
-docker run -it --name violetminer-ttyd andrewnk/turtlecoin:violetminer-ttyd
+docker run -d -p 7681:7681 --name violetminer-ttyd andrewnk/turtlecoin:violetminer-ttyd
 ```
 
 To use from the Docker Hub image:
