@@ -22,9 +22,7 @@ Current list of Docker images (more to come soon):
 | [violetminer](dockerfiles/violetminer) | Runs violetminer |
 | [violetminer with TTYD](dockerfiles/violetminer-ttyd) | Runs violetminer with TTYD |
 | [zedwallet](dockerfiles/zedwallet) | Runs zedwallet |
-| [zedwallet-beta](dockerfiles/zedwallet-beta) | Runs zedwallet-beta |
 | [zedwallet with TTYD](dockerfiles/zedwallet-ttyd) | Runs zedwallet with TTYD |
-| [zedwallet-beta with TTYD](dockerfiles/zedwallet-beta-ttyd) | Runs zedwallet-beta with TTYD |
 
 Current list of Docker Compose files (more to come soon):
 
