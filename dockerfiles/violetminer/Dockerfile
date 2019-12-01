@@ -22,7 +22,7 @@ RUN apk add --no-cache --virtual general-dependencies \
     cmake \
     build-base \
     openssl-dev && \
-    cmake .. && \
+    cmake -DENABLE_NVIDIA=OFF .. && \
     make && \
     mkdir /violetminer && \
     mv argon2-cpp-test violetminer /violetminer && \
