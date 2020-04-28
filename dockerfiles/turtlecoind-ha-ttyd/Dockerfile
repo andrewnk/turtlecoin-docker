@@ -1,6 +1,6 @@
 FROM andrewnk/turtlecoin:base as base
 
-FROM alpine
+FROM node:10.20.1-alpine3.11
 
 # set turtlecoin shell to zsh in order to run tmux as a non root user
 RUN addgroup -S turtlecoin && adduser -S turtlecoin -G turtlecoin -s /bin/zsh -h /home/turtlecoin && \

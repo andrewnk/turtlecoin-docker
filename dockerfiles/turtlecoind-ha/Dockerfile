@@ -1,6 +1,6 @@
 FROM andrewnk/turtlecoin:base as base
 
-FROM alpine
+FROM node:10.20.1-alpine3.11
 
 RUN addgroup -S turtlecoin && adduser -S turtlecoin -G turtlecoin -h /home/turtlecoin && \
     apk add --no-cache 'su-exec>=0.2'
